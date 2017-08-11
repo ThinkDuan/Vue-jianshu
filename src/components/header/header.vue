@@ -1,39 +1,56 @@
 <template>
     <div class="nav">
         <div class="nav-main">
-            <div class="logo">
-                <router-link to="/">
-                    <img src="../../images/logo.png" />
-                </router-link>
+            <div class="first">
+                <div class="logo">
+                    <router-link to="/">
+                        <img src="../../images/logo.png" />
+                    </router-link>
+                </div>
+                <div class="list-drop-mean">
+                    <button class="list-drop-button">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+                <div class="list">
+                    <ul>
+                        <li class="li-show">
+                            <span>首页</span>
+                            <i class="iconfont">&#xe64f;</i>
+                        </li>
+                        <li class="li-show">
+                            <span>下载APP</span>
+                            <i class="iconfont">&#xe714;</i>
+                        </li>
+                        <li>
+                            <form>
+                                <input class="search" />
+                                <i class="iconfont">&#xe6ac;</i>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
             </div>
-            <div class="list">
-                <ul>
-                    <li>首页</li>
-                    <li>下载APP</li>
-                    <li>
-                        <form>
-                            <input class="search" />
-                            <i class="iconfont">&#xe6ac;</i>
-                        </form>
-                    </li>
-                </ul>
-            </div>
-            <div class="user">
-                <button class="btn btn-switch">Aa</button>
-            </div>
-            <div class="login">
-                <router-link to="/login/signin">
-                    <button class="btn btn-login">登陆</button>
-                </router-link>
-            </div>
-            <div class="register">
-                <router-link to="/login/signup">
-                    <button class="btn btn-register">注册</button>
-                </router-link>
-            </div>
-            <div class="write">
-                <button class="btn btn-write" type="button">
-                    <i class="iconfont">&#59038;</i>&nbsp写文章</button>
+            <div class="user-btn-group">
+                <div class="user">
+                    <button class="btn btn-switch">Aa</button>
+                </div>
+                <div class="login">
+                    <router-link to="/login/signin">
+                        <button class="btn btn-login">登陆</button>
+                    </router-link>
+                </div>
+                <div class="register">
+                    <router-link to="/login/signup">
+                        <button class="btn btn-register">注册</button>
+                    </router-link>
+                </div>
+                <div class="write">
+                    <button class="btn btn-write" type="button">
+                        <i class="iconfont">&#59038;</i>&nbsp写文章</button>
+                </div>
             </div>
         </div>
     </div>
@@ -49,7 +66,6 @@ export default {
     width: 100%;
     min-width: 768px;
     max-width: 1440px;
-    text-align: center;
     height: 56px;
     overflow: hidden;
     border: none;
@@ -60,6 +76,23 @@ export default {
     width: 100%;
     height: 58px;
     border: none;
+    display: flex;
+    display: -webkit-flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.first {
+    width: 700px;
+    display: flex;
+    display: -webkit-flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.user-btn-group {
+    display: flex;
+    display: -webkit-flex;
 }
 
 .logo {
@@ -74,23 +107,57 @@ export default {
     width: 100%;
     height: 100%;
 }
-
-.nav div {
-    display: inline-block;
+.list-drop-button{
+    width: 46px;
+    height: 37px;
+    border-radius: 5px;
+    border: 1px solid #DDDDDD;
+    background-color: #FFFFFF;
+    text-align: center;
+}
+.list-drop-button span{
+    display: block;
+    width: 22px;
+    height: 5px;
+    border-top: 2px solid #888888;
+    margin-left: 12px;
+}
+.list-drop-button span:first-child{
+    margin-top: 5px;
+}
+@media screen and (max-width:768px) {
+    .list{
+        display: none;
+    }
+}
+@media screen and (min-width:768px) and (max-width:1080px) {
+    .list ul li {
+        font-size: 18px;
+        margin-left: 25px;
+        border: none;
+        display: inline-block;
+    }
+    .li-show span {
+        display: none;
+    }
+    .list-drop-mean{
+        display: none;
+    }
 }
 
-.list {
-    float: left;
-    margin-left: 70px;
-    margin-right: 360px;
-    padding-top: 10px;
-}
-
-.list ul li {
-    font-size: 18px;
-    margin-left: 40px;
-    border: none;
-    display: inline-block;
+@media screen and (min-width:1080px) {
+    .list ul li {
+        font-size: 18px;
+        margin-left: 40px;
+        border: none;
+        display: inline-block;
+    }
+    .li-show i {
+        display: none;
+    }
+    .list-drop-mean{
+        display: none;
+    }
 }
 
 .list ul li>form {
