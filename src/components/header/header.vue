@@ -125,6 +125,11 @@ export default {
 .list-drop-button span:first-child{
     margin-top: 5px;
 }
+.li-show:hover{
+    color: #F66F6F;
+    cursor: pointer;
+    font-weight: 600;
+}
 @media screen and (max-width:768px) {
     .list{
         display: none;
@@ -198,10 +203,16 @@ export default {
     width: 80px;
     border: 1px solid #F1907F;
 }
+.btn-register:hover{
+    background-color: #E3DCDC;
+}
 
 .btn-write {
     width: 100px;
     height: 40px;
+}
+.btn-write:hover{
+    background-color: #EB3333;
 }
 
 .user,

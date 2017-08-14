@@ -4,6 +4,7 @@ import Login from '@/components/login/login'
 import Header from '@/components/header/header'
 import Signin from '@/components/login/children/signin'
 import Signup from '@/components/login/children/signup'
+import Container from '@/components/container/container'
 
 Vue.use(Router)
 
@@ -28,8 +29,15 @@ export default new Router({
     },
     {
       path: '/',
-      name: 'Header',
-      component: Header
+      name: 'container',
+      component: Container,
+      children: [
+        {
+          path: '',
+          name: 'header',
+          component: Header
+        }
+      ]
     }
   ]
 })

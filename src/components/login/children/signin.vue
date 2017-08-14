@@ -3,11 +3,11 @@
         <form>
             <div class="user-message user-name">
                 <i class="iconfont">&#59064;</i>
-                <input class="user-input" id="user-name" name="user-name" type="text" placeholder="请输入手机号邮箱或者登录名"></input>
+                <input class="user-input" id="user-name" name="user-name" v-model="userName" type="text" placeholder="请输入手机号邮箱或者登录名"></input>
             </div>
             <div class="user-message password">
                 <i class="iconfont">&#xe652;</i>
-                <input class="user-input" id="password" name="password" type="password" placeholder="请输入密码"></input>
+                <input class="user-input" id="password" name="password" v-model="password" type="password" placeholder="请输入密码"></input>
             </div>
             <div class="get-slider">
                 <div class="slider">滑块验证占位</div>
@@ -26,7 +26,22 @@
     </div>
 </template>
 <script>
-
+import Vue from 'vue'
+import VueFormGenerator from 'vue-form-generator'
+Vue.use(VueFormGenerator)
+export default {
+  data () {
+    return {
+      userName: '',
+      password: ''
+    }
+  },
+  computed: {
+    rightUserName: function () {
+      return /^1\d{10}$/gi.test(this.userName)
+    }
+  }
+}
 </script>
 <style scoped>
 .login-main button {
