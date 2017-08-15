@@ -3,7 +3,7 @@
         <form>
             <div class="user-message user-name">
                 <i class="iconfont">&#59064;</i>
-                <input class="user-input" id="user-name" name="user-name" v-model="userName" type="text" placeholder="请输入手机号邮箱或者登录名"></input>
+                <input class="user-input" id="user-name" @change="isRightUserName()" name="user-name" v-model="userName" type="text" placeholder="请输入手机号邮箱或者登录名"></input>
             </div>
             <div class="user-message password">
                 <i class="iconfont">&#xe652;</i>
@@ -20,27 +20,65 @@
                 <input class="remember-password-problem" type="button" value="登陆遇到问题？" />
             </div>
             <div class="submit">
-                <input class="submit-btn" type="submit" value="登陆" />
+                <input class="submit-btn" type="submit" @click.prevent="isRightUserName()" value="登陆" />
             </div>
         </form>
+        <div class="errMessage" v-show="needErrMessage">
+            <div class="errMessage-arrow"></div>
+            <div class="errMessage-arrow-bg"></div>
+            <div class="errMessage-inner">
+                <i class="iconfont">&#xe65e;</i>
+                <span>{{ errMessage }}</span>
+            </div>
+        </div>
     </div>
 </template>
 <script>
-import Vue from 'vue'
-import VueFormGenerator from 'vue-form-generator'
-Vue.use(VueFormGenerator)
 export default {
-  data () {
-    return {
-      userName: '',
-      password: ''
+    data() {
+        return {
+            userName: '',
+            password: '',
+            errMessage: '',
+            needErrMessage: false,
+        }
+    },
+    computed: {
+        rightUserName: function () {
+            return /^1\d{10}$/gi.test(this.userName)
+        }
+    },
+    methods: {
+        isRightUserName: function () {
+            let isRightUserName = false;
+            let isEmail = /[@]/g;
+            let phoneReg = /^1[34578]\d{9}$/;
+            let emailReg = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+[.]([a-zA-Z0-9_-])+$/;
+            if (this.userName === '') {
+                isRightUserName = false;
+                this.errMessage = '';
+                this.needErrMessage = false;
+            } else {
+                if (isEmail.test(this.userName)) {
+                    if (!emailReg.test(this.userName)) {
+                        this.errMessage = "邮箱错误,请重新输入";
+                        this.needErrMessage = true;
+                    } else {
+                        this.errMessage = '';
+                        this.needErrMessage = false;
+                    }
+                } else {
+                    if (!phoneReg.test(this.userName)) {
+                        this.errMessage = "手机号错误,请重新输入";
+                        this.needErrMessage = true;
+                    }else{
+                        this.errMessage = '';
+                        this.needErrMessage = false;
+                    }
+                }
+            }
+        }
     }
-  },
-  computed: {
-    rightUserName: function () {
-      return /^1\d{10}$/gi.test(this.userName)
-    }
-  }
 }
 </script>
 <style scoped>
@@ -49,12 +87,13 @@ export default {
     background-color: #FFFFFF;
 }
 
-.btn-label-login{
+.btn-label-login {
     font-weight: 700px;
     color: #EA6F5A;
 }
 
 .user-form {
+    position: relative;
     padding-top: 35px;
     margin-left: 50px;
 }
@@ -85,6 +124,7 @@ export default {
     border: none;
     width: 85%;
     padding-top: 20px;
+    background-color: #FFFFFF;
 }
 
 .remember-password {
@@ -106,7 +146,7 @@ export default {
     font-size: 14px;
 }
 
-.remember-password-problem:hover{
+.remember-password-problem:hover {
     color: #000;
 }
 
@@ -153,7 +193,7 @@ export default {
     color: #FFFFFF;
 }
 
-.submit-btn:hover{
+.submit-btn:hover {
     background-color: #2A7EB1;
 }
 
@@ -189,5 +229,54 @@ export default {
     background-color: #F0F0F0;
     border-radius: 50%;
     border: 0;
+}
+
+.errMessage {
+    border: 1px solid #EC7D6A;
+    margin-left: 10px;
+    border-radius: 5px;
+    position: absolute;
+    top: 46px;
+    left: 300px;
+}
+
+.errMessage-arrow {
+    box-sizing: border-box;
+    width: 8px;
+    height: 8px;
+    border-left: 1px solid #EC7D6A;
+    border-bottom: 1px solid #EC7D6A;
+    transform: rotate(45deg);
+    margin-left: -5px;
+    margin-top: 13px;
+}
+
+.errMessage-arrow-bg {
+    background-color: #FFFFFF;
+    z-index: 1000;
+    width: 10px;
+    height: 10px;
+    margin-left: -1px;
+    margin-top: -9px;
+}
+
+.errMessage-inner {
+    display: flex;
+    display: -webkit-flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: -21px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.errMessage-inner i {
+    color: red;
+}
+
+.errMessage-inner span {
+    line-height: 35px;
+    word-break: keep-all;
+    white-space: nowrap;
 }
 </style>

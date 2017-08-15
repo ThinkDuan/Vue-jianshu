@@ -19,7 +19,7 @@
                 <input class="user-input" id="password" name="password" type="password" placeholder="设置密码"></input>
             </div>
             <div class="register">
-                <input class="register-btn" type="submit" value="注册" />
+                <input class="register-btn" @click.prevent="count()" type="submit" value="注册" />
             </div>
         </form>
     </div>
