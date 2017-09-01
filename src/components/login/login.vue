@@ -19,17 +19,8 @@
             <div class="login-other">———&nbsp&nbsp&nbsp社交账号登陆&nbsp&nbsp&nbsp———</div>
             <div class="login-other-li">
                 <ul>
-                    <li>
-                        <img src="../../images/qq.jpg" />
-                    </li>
-                    <li>
-                        <img src="../../images/weixin.jpg" />
-                    </li>
-                    <li>
-                        <img src="../../images/weibo.jpg" />
-                    </li>
-                    <li>
-                        <img class="img-other" alt="其他" />
+                    <li v-for="loginOther in loginOthers">
+                        <img :src="loginOther" />
                     </li>
                 </ul>
             </div>
@@ -44,7 +35,12 @@ export default {
       form: {
         onValue: true,
         offValue: false
-      }
+      },
+      loginOthers: [
+          require("../../images/qq.jpg"),
+          require("../../images/weibo.jpg"),
+          require("../../images/weixin.jpg")
+      ]
     }
   }
 }
@@ -90,14 +86,12 @@ export default {
     height: 40px;
     font-size: 18px;
     color: #B09696;
+    border-bottom: 2px solid #FFF;
 }
 
 .title{
     height: 50px;
-}
-
-.btn-label:active{
-    color: #EA6F5A;
+    text-align: center;
 }
 
 .btn-label:hover {
@@ -130,10 +124,12 @@ export default {
     color: black;
     color: #B5B5B5;
     margin-top: 30px;
+    text-align: center;
 }
 
 .login-other-li ul {
     height: 130px;
+    text-align: center;
 }
 
 .login-other-li ul li {
@@ -155,6 +151,13 @@ export default {
     background-color: #F0F0F0;
     border-radius: 50%;
     border: 0;
+}
+.router-link-active button{
+    color: #EA6F5A;
+    border-bottom: 2px solid #EA6F5A;
+}
+.router-link button{
+    border-bottom: 2px solid #FFFFFF;
 }
 </style>
 

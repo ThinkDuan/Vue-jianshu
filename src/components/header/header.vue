@@ -56,7 +56,11 @@
     </div>
 </template>
 <script>
+import SwitchMode from './children/switchMode'
 export default {
+    components: {
+        SwitchMode
+    }
 }
 </script>
 <style scoped>

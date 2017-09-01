@@ -3,29 +3,45 @@
         <form>
             <div class="user-message user-name">
                 <i class="iconfont">&#59064;</i>
-                <input class="user-input" id="user-name" name="user-name" type="text" placeholder="你的昵称"></input>
+                <input class="user-input" v-model="userName" id="user-name" name="user-name" type="text" placeholder="你的昵称"></input>
             </div>
             <div class="user-message user-phone">
                 <i class="iconfont">&#59064;</i>
-                <input class="user-input" id="user-phone" name="user-phone" type="text" placeholder="手机号"></input>
+                <input class="user-input" v-model="userPhone" id="user-phone" name="user-phone" type="text" placeholder="手机号"></input>
             </div>
             <div class="user-message user-phone-code">
                 <i class="iconfont">&#xe63a;</i>
-                <input class="user-input" id="user-phone-code" name="user-phone-code" type="text" placeholder="手机验证码"></input>
+                <input class="user-input" v-model="phoneCode" id="user-phone-code" name="user-phone-code" type="text" placeholder="手机验证码"></input>
                 <input class="get-phone-code" type="button" value="发送验证码"/>
             </div>
             <div class="user-message password">
                 <i class="iconfont">&#xe652;</i>
-                <input class="user-input" id="password" name="password" type="password" placeholder="设置密码"></input>
+                <input class="user-input" v-model="password" id="password" name="password" type="password" placeholder="设置密码"></input>
             </div>
             <div class="register">
                 <input class="register-btn" @click.prevent="count()" type="submit" value="注册" />
+            </div>
+            <div class="protocol">
+                点击 “注册” 即表示您同意并愿意遵守简书<br/>
+                <a>用户协议</a> 和 <a>隐私政策</a>
             </div>
         </form>
     </div>
 </template>
 <script>
+export default {
+  data(){
+      return {
+          userName: '',
+          userPhone: '',
+          phoneCode: '',
+          password: ''
+      }
+  }
+}
 </script>
+
+
 <style scoped>
 .login-main button {
     border: none;
@@ -38,7 +54,10 @@
 }
 .user-form {
     padding-top: 35px;
-    margin-left: 50px;
+    display: flex;
+    display: -webkit-flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .input-main {
@@ -154,5 +173,9 @@
     background-color: #F0F0F0;
     border-radius: 50%;
     border: 0;
+}
+.protocol{
+    font-size: 10px;
+    text-align: center;
 }
 </style>
