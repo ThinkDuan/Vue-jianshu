@@ -65,8 +65,6 @@ export default {
 </script>
 <style scoped>
 .nav {
-    position: absolute;
-    top: 0px;
     width: 100%;
     min-width: 768px;
     max-width: 1440px;

@@ -27,12 +27,12 @@ export default {
               key: 2,
               imgClickUrl:"",
               imgUrl: require('../../../../images/02.jpg'),
-              name: "读书"
+              name: "漫画 手绘"
           },{
               key: 3,
               imgClickUrl:"",
               imgUrl: require('../../../../images/03.jpg'),
-              name: "读书"
+              name: "世间事"
           },{
               key: 4,
               imgClickUrl:"",

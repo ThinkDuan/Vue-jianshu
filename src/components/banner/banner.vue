@@ -102,7 +102,6 @@ export default {
 </script>
 <style scoped>
 .banner{
-    width: 80%;
     position: relative;
     overflow: hidden;
 }
