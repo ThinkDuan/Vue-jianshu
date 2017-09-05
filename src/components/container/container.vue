@@ -2,9 +2,9 @@
   <div class="container">
       <header-nav></header-nav>
       <banner></banner>
-      <div>
-          <main></main>
-          <sider></sider>
+      <div class="main">
+          <main-content class="mainContent"></main-content>
+          <sider class="sider"></sider>
       </div>
   </div>
 </template>
@@ -12,13 +12,13 @@
 import HeaderNav from '../header/header'
 import Banner from '../banner/banner'
 import Sider from './children/sider'
-import Main from './children/main'
+import MainContent from './children/mainContent'
 export default {
   components:{
       HeaderNav,
       Banner,
       Sider,
-      Main
+      MainContent
   }
 }
 </script>
@@ -32,5 +32,18 @@ export default {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+}
+.main{
+    width: 80%;
+    margin-top: 40px;
+    display: flex;
+    display: -webkit-flex;
+    justify-content: flex-start;
+}
+.mainContent{
+    width: 66.66%;
+}
+.sider{
+    width: 33.34%;
 }
 </style>

@@ -175,6 +175,7 @@ export default {
     border: 0;
 }
 .protocol{
+    margin-top: 8px;
     font-size: 10px;
     text-align: center;
 }

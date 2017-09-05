@@ -30,14 +30,7 @@ export default new Router({
     {
       path: '/',
       name: 'container',
-      component: Container,
-      children: [
-        {
-          path: '',
-          name: 'header',
-          component: Header
-        }
-      ]
+      component: Container
     }
   ]
 })
