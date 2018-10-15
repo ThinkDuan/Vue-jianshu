@@ -44,6 +44,21 @@ export default {
         require("../../images/weixin.jpg")
       ]
     };
+  },
+  methods:{
+    getUser(){
+      this.$http({
+        url: '/getUser',
+        type: 'get'
+      }).then((res) => {
+        console.log("res",res);
+      }).catch(() => {
+        console.log("error")
+      })
+    }
+  },
+  created(){
+    this.getUser();
   }
 };
 </script>
