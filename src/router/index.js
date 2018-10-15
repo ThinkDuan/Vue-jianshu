@@ -1,10 +1,11 @@
-import Vue from 'vue'
-import Router from 'vue-router'
-import Login from '@/components/login/login'
-import Header from '@/components/header/header'
-import Signin from '@/components/login/children/signin'
-import Signup from '@/components/login/children/signup'
-import Container from '@/components/container/container'
+import Vue from 'vue';
+import Router from 'vue-router';
+import Login from '@/components/login/login';
+import Header from '@/components/header/header';
+import Signin from '@/components/login/children/signin';
+import Signup from '@/components/login/children/signup';
+import Container from '@/components/container/container';
+import PropDemo from '@/components/vueDemo/propFather'
 
 Vue.use(Router)
 
@@ -31,6 +32,11 @@ export default new Router({
       path: '/',
       name: 'container',
       component: Container
+    },
+    {
+      path: '/propDemo',
+      name: 'propDemo',
+      component: PropDemo
     }
   ]
 })
